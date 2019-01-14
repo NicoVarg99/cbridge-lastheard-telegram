@@ -1,0 +1,19 @@
+{
+  "name": "dmrqsos",
+  "version": "1.0.0",
+  "description": "Telegram notify on DMR QSOs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicoVarg99/dmrqsos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicoVarg99/dmrqsos/issues"
+  },
+  "homepage": "https://github.com/NicoVarg99/dmrqsos#readme"
+}

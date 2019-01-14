@@ -1,5 +1,5 @@
 #!/bin//bash
-
+mkdir -p data
 echo "Fetching data..."
 
 DATAURL="http://cbridge.dmr-taa.it:42420/data.txt?param=ajaxminimalnetwatch"
@@ -15,5 +15,5 @@ if [ $CURLSUCCESS -eq "0" ]; then
   sed 's/&nbsp;/ /g' |
   sed 's/\t/\n/g' |
   sed 's/\v/,/g' |
-  tail -n +2 #Elimina la prima riga
+  tail -n +2 > data/data.csv #Elimina la prima riga
 fi
