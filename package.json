@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/NicoVarg99/dmrqsos/issues"
   },
-  "homepage": "https://github.com/NicoVarg99/dmrqsos#readme"
+  "homepage": "https://github.com/NicoVarg99/dmrqsos#readme",
+  "dependencies": {
+    "csv-parse": "^4.3.0"
+  }
 }
