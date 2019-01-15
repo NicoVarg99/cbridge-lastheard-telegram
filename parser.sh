@@ -17,6 +17,9 @@ if [ $CURLSUCCESS -eq "0" ]; then
   echo "CURL ok, Parsing RAW DATA..."
   echo "$CURLOUTPUT" |
   sed 's/&nbsp;/ /g' |
+  sed 's/ - / /g' | #Elimina gli spazi tra i nomi
+  sed 's/  ITA -- / /g' |
+  sed 's/ -- / /g' |
   sed 's/\t/\n/g' |
   sed 's/\v/,/g' |
   tail -n +2 > data/data.csv #Elimina la prima riga
