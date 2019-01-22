@@ -3,12 +3,11 @@ var parse = require('csv-parse');
 const { exec } = require('child_process');
 const TelegramBot = require('node-telegram-bot-api');
 const token =  fs.readFileSync('data/token', 'utf8').trim();
-var csvData=[];
+var csvData = [];
 var baseTime = 0;
-var channelid = "-1001208288459"
+var chatid = fs.readFileSync('data/chatid', 'utf8').trim();
 var refreshTime = 3000;
 const bot = new TelegramBot(token, {polling: true});
-
 
 function checkEntry(entry) {
   if (entry[4] != "22232") return false;
@@ -27,17 +26,13 @@ function sendEntry(entry) {
   text += "\n📡 Sito: " + entry[6];
   if (!entry[7].startsWith("0.0%"))
     text += "\n⚠️ Pacchetti persi: " + entry[7];
-  bot.sendMessage(channelid, text);
+  bot.sendMessage(chatid, text);
 }
 
 function parseData() {
   //console.log("Downloading data...");
   exec('./parser.sh', (err, stdout, stderr) => {
-    if (err) return; // node couldn't execute the command
-
-    // the *entire* stdout and stderr (buffered)
-    // console.log(`stdout: ${stdout}`);
-    // console.log(`stderr: ${stderr}`);
+    if (err) return;
 
     fs.createReadStream("/tmp/dmrdata/data.csv")
         .pipe(parse({delimiter: ','}))
@@ -77,4 +72,4 @@ function checkUpdates() {
 }
 
 parseData();
-//bot.sendMessage(channelid, "online");
+//bot.sendMessage(chatid, "online");

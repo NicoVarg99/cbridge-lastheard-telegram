@@ -1,11 +1,13 @@
 #!/bin//bash
-mkdir -p "/tmp/dmrdata"
 
-echo > "/tmp/dmrdata/data.csv"
+TEMPFILEPATH="/tmp/dmrdata/data.csv"
+REMOTE_HOST=`cat data/remotehost`
+
+install -D /dev/null $TEMPFILEPATH #Crate empty file
 
 echo "Fetching data..."
 
-DATAURL="http://cbridge.dmr-taa.it:42420/data.txt?param=ajaxminimalnetwatch"
+DATAURL="http://$REMOTE_HOST:42420/data.txt?param=ajaxminimalnetwatch"
 CURLOUTPUT=$(curl -s -m 50 $DATAURL)
 CURLSUCCESS=$?
 
