@@ -6,7 +6,7 @@ const token =  fs.readFileSync('data/token', 'utf8').trim();
 var csvData = [];
 var baseTime = 0;
 var chatid = fs.readFileSync('data/chatid', 'utf8').trim();
-var refreshTime = 3000;
+var refreshTime = fs.readFileSync('data/refreshtime', 'utf8').trim();
 const bot = new TelegramBot(token, {polling: true});
 
 function checkEntry(entry) {
