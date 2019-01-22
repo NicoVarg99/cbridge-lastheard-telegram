@@ -1,11 +1,7 @@
 #!/bin//bash
-mkdir -p "data"
+mkdir -p "/tmp/dmrdata"
 
-
-if [ ! -f "data/data.csv" ]; then
-  echo > "data/data.csv"
-fi
-
+echo > "/tmp/dmrdata/data.csv"
 
 echo "Fetching data..."
 
@@ -22,5 +18,6 @@ if [ $CURLSUCCESS -eq "0" ]; then
   sed 's/ -- / /g' |
   sed 's/\t/\n/g' |
   sed 's/\v/,/g' |
-  tail -n +2 > data/data.csv #Elimina la prima riga
+  sed 's/\v/,/g' | #Elimina i backspace
+  tail -n +2 > /tmp/dmrdata/data.csv #Elimina la prima riga
 fi
